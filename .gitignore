@@ -94,3 +94,7 @@ local.properties
 .scala_dependencies
 .worksheet
 
+# Custom 
+.classpath
+.project
+synapse-admin.conf
