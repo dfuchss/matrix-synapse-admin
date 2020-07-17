@@ -18,6 +18,6 @@ public final class MatrixVersion {
 
 	@Override
 	public String toString() {
-		return "Version [serverVersion=" + this.serverVersion + ", pythonVersion=" + this.pythonVersion + "]";
+		return "Server Version: " + this.serverVersion + " - Python Version: " + this.pythonVersion;
 	}
 }

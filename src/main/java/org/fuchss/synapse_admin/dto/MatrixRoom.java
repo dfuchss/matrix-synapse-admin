@@ -7,13 +7,25 @@ public final class MatrixRoom {
 	private String roomId;
 	@JsonProperty("name")
 	private String name;
+	@JsonProperty("creator")
+	private String creator;
+	@JsonProperty("joined_members")
+	private int joinedMembers;
 
 	public String getRoomId() {
 		return this.roomId;
 	}
 
 	public String getName() {
-		return this.name;
+		return this.name == null ? "" : this.name;
+	}
+
+	public String getCreator() {
+		return this.creator;
+	}
+
+	public int getJoinedMembers() {
+		return this.joinedMembers;
 	}
 
 	@Override
@@ -21,4 +33,7 @@ public final class MatrixRoom {
 		return "MatrixRoom [name=" + this.name + "]";
 	}
 
+	public String prettyString() {
+		return (this.name == null ? "" : this.name + " - ") + this.roomId;
+	}
 }

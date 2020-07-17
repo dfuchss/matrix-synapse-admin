@@ -37,7 +37,7 @@ public final class MatrixUser {
 	}
 
 	public String getUserType() {
-		return this.userType;
+		return this.userType == null ? "" : this.userType;
 	}
 
 	public boolean isDeactivated() {
@@ -45,17 +45,21 @@ public final class MatrixUser {
 	}
 
 	public String getDisplayName() {
-		return this.displayName;
+		return this.displayName == null ? "" : this.displayName;
 	}
 
 	public String getAvatarUrl() {
-		return this.avatarUrl;
+		return this.avatarUrl == null ? "" : this.avatarUrl;
 	}
 
 	@Override
 	public String toString() {
 		return "MatrixUser [id=" + this.id + ", isGuest=" + this.isGuest + ", isAdmin=" + this.isAdmin + ", userType=" + this.userType
 				+ ", deactivated=" + this.deactivated + ", displayName=" + this.displayName + ", avatarUrl=" + this.avatarUrl + "]";
+	}
+
+	public String prettyString() {
+		return (this.displayName == null ? "" : this.displayName + " - ") + this.id;
 	}
 
 }

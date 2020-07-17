@@ -3,10 +3,8 @@ package org.fuchss.synapse_admin;
 import java.io.File;
 import java.io.IOException;
 
-import org.fuchss.synapse_admin.api.RemoteMedia;
-import org.fuchss.synapse_admin.api.Room;
-import org.fuchss.synapse_admin.api.User;
-import org.fuchss.synapse_admin.api.Version;
+import org.eclipse.swt.widgets.Display;
+import org.fuchss.synapse_admin.ui.MainFrame;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,21 +17,11 @@ public class Main {
 
 	private static final String CONF = "synapse-admin.conf";
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String args[]) throws IOException {
 		Conf conf = Main.loadConfig(args);
 		Server server = new Server(conf.getServer(), conf.getToken());
-
-		Version ve = new Version(server);
-		System.out.println(ve.getVersion());
-
-		Room re = new Room(server);
-		System.out.println(re.getRooms());
-
-		User ue = new User(server);
-		System.out.println(ue.getUsers());
-
-		RemoteMedia rm = new RemoteMedia(server);
-		System.out.println(rm.purgeRemoteMedia(System.currentTimeMillis()));
+		MainFrame shell = new MainFrame(Display.getDefault(), server);
+		shell.startEventLoop();
 	}
 
 	private static Conf loadConfig(String[] args) throws IOException {
