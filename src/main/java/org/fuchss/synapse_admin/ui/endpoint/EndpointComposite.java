@@ -36,7 +36,11 @@ public abstract class EndpointComposite<Endpoint, DTO, C extends DTOComposite<En
 
 	}
 
-	protected abstract C createComposite(Composite parent, int style);
+	public final void reload() {
+		this.setEndpoint(this.endpoint);
+	}
+
+	protected abstract C createComposite(EndpointComposite<Endpoint, DTO, C> parent, int style);
 
 	public EndpointComposite(Composite parent, int style, Endpoint endpoint) {
 		this(parent, style);
@@ -76,4 +80,5 @@ public abstract class EndpointComposite<Endpoint, DTO, C extends DTOComposite<En
 		int idx = this.combo.getSelectionIndex();
 		this.dtoComposite.setElement(this.dtos.get(idx));
 	}
+
 }

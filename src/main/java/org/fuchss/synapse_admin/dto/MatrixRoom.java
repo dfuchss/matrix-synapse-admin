@@ -12,6 +12,9 @@ public final class MatrixRoom {
 	@JsonProperty("joined_members")
 	private int joinedMembers;
 
+	@JsonProperty("joined_local_members")
+	private int joinedLocalMembers;
+
 	public String getRoomId() {
 		return this.roomId;
 	}
@@ -26,6 +29,10 @@ public final class MatrixRoom {
 
 	public int getJoinedMembers() {
 		return this.joinedMembers;
+	}
+
+	public int getJoinedLocalMembers() {
+		return this.joinedLocalMembers;
 	}
 
 	@Override

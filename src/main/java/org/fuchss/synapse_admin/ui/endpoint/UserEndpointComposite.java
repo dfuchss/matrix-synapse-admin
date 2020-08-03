@@ -31,7 +31,7 @@ public class UserEndpointComposite extends EndpointComposite<User, MatrixUser, U
 	}
 
 	@Override
-	protected UserComposite createComposite(Composite parent, int style) {
+	protected UserComposite createComposite(EndpointComposite<User, MatrixUser, UserComposite> parent, int style) {
 		return new UserComposite(parent, style);
 	}
 

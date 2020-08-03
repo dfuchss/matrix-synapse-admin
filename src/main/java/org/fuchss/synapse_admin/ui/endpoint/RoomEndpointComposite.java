@@ -29,7 +29,7 @@ public class RoomEndpointComposite extends EndpointComposite<Room, MatrixRoom, R
 	}
 
 	@Override
-	protected RoomComposite createComposite(Composite parent, int style) {
+	protected RoomComposite createComposite(EndpointComposite<Room, MatrixRoom, RoomComposite> parent, int style) {
 		return new RoomComposite(parent, style);
 	}
 

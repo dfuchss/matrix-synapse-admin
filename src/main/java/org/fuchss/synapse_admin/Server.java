@@ -6,7 +6,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpRequest.Builder;
 import java.net.http.HttpResponse;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public final class Server {
 	private String url;
@@ -20,26 +20,25 @@ public final class Server {
 	}
 
 	public HttpResponse<String> get(String endpoint) {
-		return this.request(endpoint, Builder::GET);
+		var result = this.request(endpoint, Builder::GET);
+		System.err.println(result);
+		return result;
 	}
 
 	public HttpResponse<String> post(String endpoint, String data) {
-		return this.request(endpoint, b -> b.POST(data == null ? BodyPublishers.noBody() : BodyPublishers.ofString(data)));
+		var result = this.request(endpoint, b -> b.POST(data == null ? BodyPublishers.noBody() : BodyPublishers.ofString(data)));
+		System.err.println(result);
+		return result;
 	}
 
-	public HttpResponse<String> put(String endpoint, String data) {
-		return this.request(endpoint, b -> b.PUT(data == null ? BodyPublishers.noBody() : BodyPublishers.ofString(data)));
-	}
-
-	private HttpResponse<String> request(String endpoint, Function<Builder, Builder> method) {
+	private HttpResponse<String> request(String endpoint, UnaryOperator<Builder> method) {
 		try {
 			Builder builder = HttpRequest.newBuilder() //
 					.uri(URI.create(this.url + endpoint)) //
 					.setHeader("Authorization", "Bearer " + this.token);
 			builder = method.apply(builder);
 
-			HttpResponse<String> response = this.client.send(builder.build(), HttpResponse.BodyHandlers.ofString());
-			return response;
+			return this.client.send(builder.build(), HttpResponse.BodyHandlers.ofString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

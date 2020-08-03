@@ -30,6 +30,7 @@ public class MainFrame extends SWTShell {
 		super(display, SWT.SHELL_TRIM, false);
 		this.setLayout(new GridLayout(1, false));
 		this.createContents();
+		this.centerMe();
 		this.setServer(server);
 	}
 

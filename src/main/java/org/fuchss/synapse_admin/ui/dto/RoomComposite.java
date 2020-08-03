@@ -6,9 +6,11 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Text;
 import org.fuchss.synapse_admin.api.Room;
 import org.fuchss.synapse_admin.dto.MatrixRoom;
+import org.fuchss.synapse_admin.ui.endpoint.EndpointComposite;
 
 public class RoomComposite extends DTOComposite<Room, MatrixRoom> {
 
@@ -16,8 +18,9 @@ public class RoomComposite extends DTOComposite<Room, MatrixRoom> {
 	private Text txtId;
 	private Text txtCreator;
 	private Text txtJoinedMembers;
+	private Text txtJoinedLocalMembers;
 
-	public RoomComposite(Composite parent, int style) {
+	public RoomComposite(EndpointComposite<?, ?, ?> parent, int style) {
 		super(parent, style);
 		this.setLayout(new GridLayout(2, false));
 
@@ -53,15 +56,23 @@ public class RoomComposite extends DTOComposite<Room, MatrixRoom> {
 		this.txtJoinedMembers.setEditable(false);
 		this.txtJoinedMembers.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
+		Label lblJoinedLocalMembers = new Label(this, SWT.NONE);
+		lblJoinedLocalMembers.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		lblJoinedLocalMembers.setText("Joined Local Members");
+
+		this.txtJoinedLocalMembers = new Text(this, SWT.BORDER);
+		this.txtJoinedLocalMembers.setEditable(false);
+		this.txtJoinedLocalMembers.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+
 		Composite composite = new Composite(this, SWT.NONE);
 		composite.setLayout(new GridLayout(3, false));
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 
 		Button btnPurge = new Button(composite, SWT.NONE);
-		btnPurge.setEnabled(false);
 		btnPurge.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
 		btnPurge.setBounds(0, 0, 105, 35);
 		btnPurge.setText("Purge");
+		btnPurge.addListener(SWT.Selection, e -> this.purge(parent));
 
 		Label label = new Label(composite, SWT.NONE);
 		label.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
@@ -73,11 +84,21 @@ public class RoomComposite extends DTOComposite<Room, MatrixRoom> {
 
 	}
 
+	private void purge(EndpointComposite<?, ?, ?> parent) {
+		parent.reload();
+		int result = this.endpoint.purgeRoom(this.element);
+		MessageBox mb = new MessageBox(this.getShell(), SWT.OK | SWT.ICON_INFORMATION);
+		mb.setText("Purge Result");
+		mb.setMessage("Purge Result was: " + result);
+		mb.open();
+	}
+
 	@Override
 	public void updateElementData() {
 		this.txtName.setText(this.element == null ? "" : this.element.getName());
 		this.txtId.setText(this.element == null ? "" : this.element.getRoomId());
 		this.txtCreator.setText(this.element == null ? "" : this.element.getCreator());
 		this.txtJoinedMembers.setText(this.element == null ? "" : String.valueOf(this.element.getJoinedMembers()));
+		this.txtJoinedLocalMembers.setText(this.element == null ? "" : String.valueOf(this.element.getJoinedLocalMembers()));
 	}
 }
