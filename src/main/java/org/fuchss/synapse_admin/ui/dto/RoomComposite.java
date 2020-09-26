@@ -65,7 +65,7 @@ public class RoomComposite extends DTOComposite<Room, MatrixRoom> {
 		this.txtJoinedLocalMembers.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		Composite composite = new Composite(this, SWT.NONE);
-		composite.setLayout(new GridLayout(3, false));
+		composite.setLayout(new GridLayout(5, false));
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 
 		Button btnPurge = new Button(composite, SWT.NONE);
@@ -82,11 +82,27 @@ public class RoomComposite extends DTOComposite<Room, MatrixRoom> {
 		btnAddUser.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
 		btnAddUser.setText("Add User");
 
+		label = new Label(composite, SWT.NONE);
+		label.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+
+		Button btnDelete = new Button(composite, SWT.NONE);
+		btnDelete.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		btnDelete.setText("Delete Room");
+		btnDelete.addListener(SWT.Selection, e -> this.delete(parent));
 	}
 
 	private void purge(EndpointComposite<?, ?, ?> parent) {
+		int result = this.endpoint.deleteRoom(this.element);
 		parent.reload();
+		MessageBox mb = new MessageBox(this.getShell(), SWT.OK | SWT.ICON_INFORMATION);
+		mb.setText("Delete Result");
+		mb.setMessage("Delete Result was: " + result);
+		mb.open();
+	}
+
+	private void delete(EndpointComposite<?, ?, ?> parent) {
 		int result = this.endpoint.purgeRoom(this.element);
+		parent.reload();
 		MessageBox mb = new MessageBox(this.getShell(), SWT.OK | SWT.ICON_INFORMATION);
 		mb.setText("Purge Result");
 		mb.setMessage("Purge Result was: " + result);

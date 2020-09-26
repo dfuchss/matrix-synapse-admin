@@ -12,8 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Room extends Endpoint {
 
+	private static final String ID = "<room_id>";
+
 	private static final String ROOMS = "/_synapse/admin/v1/rooms";
 	private static final String PURGE = "/_synapse/admin/v1/purge_room";
+	private static final String DELETE = "/_synapse/admin/v1/rooms/<room_id>/delete";
 	private static final String JOIN = "/_synapse/admin/v1/join/";
 
 	public Room(Server server) {
@@ -42,6 +45,13 @@ public class Room extends Endpoint {
 	public int purgeRoom(MatrixRoom room) {
 		String payload = "{\"room_id\":\"" + room.getRoomId() + "\"}";
 		var data = this.server.post(Room.PURGE, payload);
+		return data.statusCode();
+	}
+
+	public int deleteRoom(MatrixRoom room) {
+		String payload = "{}";
+		String request = Room.DELETE.replace(Room.ID, room.getRoomId());
+		var data = this.server.post(request, payload);
 		return data.statusCode();
 	}
 

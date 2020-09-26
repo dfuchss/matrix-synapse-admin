@@ -21,13 +21,13 @@ public final class Server {
 
 	public HttpResponse<String> get(String endpoint) {
 		var result = this.request(endpoint, Builder::GET);
-		System.err.println(result);
+		System.err.println(result + result.body());
 		return result;
 	}
 
 	public HttpResponse<String> post(String endpoint, String data) {
 		var result = this.request(endpoint, b -> b.POST(data == null ? BodyPublishers.noBody() : BodyPublishers.ofString(data)));
-		System.err.println(result);
+		System.err.println(result + result.body());
 		return result;
 	}
 
