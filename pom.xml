@@ -12,6 +12,13 @@
 		<maven.compiler.target>14</maven.compiler.target>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>maven-fuchss</id>
+			<url>https://raw.githubusercontent.com/dfuchss/maven/releases</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
