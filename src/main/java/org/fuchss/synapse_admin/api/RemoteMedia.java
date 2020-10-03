@@ -1,6 +1,6 @@
 package org.fuchss.synapse_admin.api;
 
-import org.fuchss.synapse_admin.Server;
+import org.fuchss.synapse_admin.server.Server;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

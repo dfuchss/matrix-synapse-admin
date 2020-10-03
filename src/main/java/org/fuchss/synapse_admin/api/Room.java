@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.fuchss.synapse_admin.Server;
 import org.fuchss.synapse_admin.dto.MatrixRoom;
 import org.fuchss.synapse_admin.dto.MatrixUser;
+import org.fuchss.synapse_admin.server.Server;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -27,7 +27,7 @@ public class Room extends Endpoint {
 		List<MatrixRoom> rooms = new ArrayList<>();
 
 		for (int offset = 0;;) {
-			var data = this.server.get(Room.ROOMS + "?from=" + offset);
+			var data = this.server == null ? null : this.server.get(Room.ROOMS + "?from=" + offset);
 			if (data == null || data.statusCode() != 200) {
 				break;
 			}

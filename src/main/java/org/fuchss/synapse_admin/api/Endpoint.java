@@ -3,7 +3,7 @@ package org.fuchss.synapse_admin.api;
 import java.util.Arrays;
 import java.util.List;
 
-import org.fuchss.synapse_admin.Server;
+import org.fuchss.synapse_admin.server.Server;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;

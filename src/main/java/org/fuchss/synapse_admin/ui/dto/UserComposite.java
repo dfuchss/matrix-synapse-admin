@@ -95,8 +95,8 @@ public class UserComposite extends DTOComposite<User, MatrixUser> {
 		if (this.element == null || this.endpoint == null) {
 			return;
 		}
-		// TODO Result
-		this.endpoint.deactivate(this.element, false);
+		// TODO WIP ..
+		// this.endpoint.deactivate(this.element, false);
 	}
 
 	@Override

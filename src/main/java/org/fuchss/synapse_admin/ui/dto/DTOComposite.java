@@ -12,6 +12,8 @@ public abstract class DTOComposite<Endpoint, DTO> extends Composite {
 
 	public final void setEndpoint(Endpoint endpoint) {
 		this.endpoint = endpoint;
+		this.element = null;
+		this.updateElementData();
 	}
 
 	public final void setElement(DTO element) {

@@ -10,14 +10,16 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.fuchss.swt.SWTShell;
-import org.fuchss.synapse_admin.Server;
 import org.fuchss.synapse_admin.api.Room;
 import org.fuchss.synapse_admin.api.User;
 import org.fuchss.synapse_admin.api.Version;
+import org.fuchss.synapse_admin.server.Server;
+import org.fuchss.synapse_admin.server.ServerConf;
 import org.fuchss.synapse_admin.ui.endpoint.RoomEndpointComposite;
 import org.fuchss.synapse_admin.ui.endpoint.UserEndpointComposite;
+import org.fuchss.synapse_admin.util.IObserver;
 
-public class MainFrame extends SWTShell {
+public class MainFrame extends SWTShell implements IObserver {
 
 	private Server server;
 
@@ -26,12 +28,15 @@ public class MainFrame extends SWTShell {
 	private UserEndpointComposite userEndpoint;
 	private RoomEndpointComposite roomEndpoint;
 
-	public MainFrame(Display display, Server server) {
+	private Label matrixVersion;
+	private Login login;
+
+	public MainFrame(Display display) {
 		super(display, SWT.SHELL_TRIM, false);
 		this.setLayout(new GridLayout(1, false));
 		this.createContents();
 		this.centerMe();
-		this.setServer(server);
+		this.inform();
 	}
 
 	@Override
@@ -42,14 +47,13 @@ public class MainFrame extends SWTShell {
 		this.createMainView();
 		this.createMenu();
 		this.createFooter();
-
 	}
 
 	private void setServer(Server server) {
 		this.server = server;
 		this.userEndpoint.setEndpoint(new User(this.server));
 		this.roomEndpoint.setEndpoint(new Room(this.server));
-
+		this.updateFooter();
 	}
 
 	private void createMainView() {
@@ -57,6 +61,9 @@ public class MainFrame extends SWTShell {
 		view.setLayout(this.stackLayout = new StackLayout());
 		view.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		view.setBounds(0, 0, 64, 64);
+
+		this.login = new Login(view, SWT.NONE);
+		this.login.registerObserver(this);
 
 		this.userEndpoint = new UserEndpointComposite(view, SWT.NONE);
 		this.roomEndpoint = new RoomEndpointComposite(view, SWT.NONE);
@@ -69,9 +76,7 @@ public class MainFrame extends SWTShell {
 
 		MenuItem mntmServer = new MenuItem(menu, SWT.CASCADE);
 		mntmServer.setText("Server");
-
-		Menu menuServer = new Menu(mntmServer);
-		mntmServer.setMenu(menuServer);
+		mntmServer.addListener(SWT.Selection, e -> this.switchTo(this.login));
 
 		MenuItem mntmEndpoint = new MenuItem(menu, SWT.CASCADE);
 		mntmEndpoint.setText("Endpoint");
@@ -99,11 +104,19 @@ public class MainFrame extends SWTShell {
 		footer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		footer.setBounds(0, 0, 64, 64);
 
-		Label matrixVersion = new Label(footer, SWT.NONE);
-		matrixVersion.setText("Version:");
-		matrixVersion.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1));
-		matrixVersion.setBounds(0, 0, 81, 25);
-		matrixVersion.setText(this.server == null ? "" : (new Version(this.server).getVersion().toString()));
+		this.matrixVersion = new Label(footer, SWT.NONE);
+		this.matrixVersion.setAlignment(SWT.RIGHT);
+		this.matrixVersion.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+		this.matrixVersion.setBounds(0, 0, 81, 25);
 	}
 
+	private void updateFooter() {
+		this.matrixVersion.setText(this.server == null ? "Not Connected" : String.valueOf((new Version(this.server).getVersion())));
+	}
+
+	@Override
+	public void inform() {
+		this.setServer(ServerConf.newServerInstance());
+		this.login.updateServer();
+	}
 }
