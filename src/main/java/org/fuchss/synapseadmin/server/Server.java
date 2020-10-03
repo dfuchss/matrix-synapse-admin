@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.server;
+package org.fuchss.synapseadmin.server;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -8,7 +8,7 @@ import java.net.http.HttpRequest.Builder;
 import java.net.http.HttpResponse;
 import java.util.function.UnaryOperator;
 
-import org.fuchss.synapse_admin.SystemConf;
+import org.fuchss.synapseadmin.SystemConf;
 
 public final class Server {
 	private String url;
@@ -47,7 +47,9 @@ public final class Server {
 
 			return this.client.send(builder.build(), HttpResponse.BodyHandlers.ofString());
 		} catch (Exception e) {
-			e.printStackTrace();
+			if (this.debug) {
+				e.printStackTrace();
+			}
 		}
 		return null;
 	}

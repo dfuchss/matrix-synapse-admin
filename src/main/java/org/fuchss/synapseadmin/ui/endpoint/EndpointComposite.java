@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.ui.endpoint;
+package org.fuchss.synapseadmin.ui.endpoint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.fuchss.synapse_admin.ui.dto.DTOComposite;
+import org.fuchss.synapseadmin.ui.dto.DTOComposite;
 import org.fuchss.tools.tuple.Tuple2;
 
 public abstract class EndpointComposite<Endpoint, DTO, C extends DTOComposite<Endpoint, DTO>> extends Composite {

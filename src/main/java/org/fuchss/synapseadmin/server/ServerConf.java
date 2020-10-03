@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.server;
+package org.fuchss.synapseadmin.server;
 
 import java.io.File;
 import java.io.IOException;

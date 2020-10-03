@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.ui;
+package org.fuchss.synapseadmin.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
@@ -10,14 +10,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.fuchss.swt.SWTShell;
-import org.fuchss.synapse_admin.api.Room;
-import org.fuchss.synapse_admin.api.User;
-import org.fuchss.synapse_admin.api.Version;
-import org.fuchss.synapse_admin.server.Server;
-import org.fuchss.synapse_admin.server.ServerConf;
-import org.fuchss.synapse_admin.ui.endpoint.RoomEndpointComposite;
-import org.fuchss.synapse_admin.ui.endpoint.UserEndpointComposite;
-import org.fuchss.synapse_admin.util.IObserver;
+import org.fuchss.synapseadmin.api.Room;
+import org.fuchss.synapseadmin.api.User;
+import org.fuchss.synapseadmin.api.Version;
+import org.fuchss.synapseadmin.server.Server;
+import org.fuchss.synapseadmin.server.ServerConf;
+import org.fuchss.synapseadmin.ui.endpoint.RoomEndpointComposite;
+import org.fuchss.synapseadmin.ui.endpoint.UserEndpointComposite;
+import org.fuchss.synapseadmin.util.IObserver;
 
 public class MainFrame extends SWTShell implements IObserver {
 

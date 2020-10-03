@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.dto;
+package org.fuchss.synapseadmin.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.ui.dto;
+package org.fuchss.synapseadmin.ui.dto;
 
 import org.eclipse.swt.widgets.Composite;
 

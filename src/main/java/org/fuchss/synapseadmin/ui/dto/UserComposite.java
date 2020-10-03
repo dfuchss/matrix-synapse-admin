@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.ui.dto;
+package org.fuchss.synapseadmin.ui.dto;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -7,8 +7,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.fuchss.synapse_admin.api.User;
-import org.fuchss.synapse_admin.dto.MatrixUser;
+import org.fuchss.synapseadmin.api.User;
+import org.fuchss.synapseadmin.dto.MatrixUser;
 
 public class UserComposite extends DTOComposite<User, MatrixUser> {
 

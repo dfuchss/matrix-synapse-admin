@@ -1,7 +1,7 @@
-package org.fuchss.synapse_admin;
+package org.fuchss.synapseadmin;
 
 public final class SystemConf {
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 
 	private SystemConf() {
 		throw new IllegalAccessError();

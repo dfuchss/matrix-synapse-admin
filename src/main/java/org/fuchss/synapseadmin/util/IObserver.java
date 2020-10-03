@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.util;
+package org.fuchss.synapseadmin.util;
 
 public interface IObserver {
 	void inform();

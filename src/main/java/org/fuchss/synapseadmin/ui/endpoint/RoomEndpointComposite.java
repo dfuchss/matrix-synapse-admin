@@ -1,12 +1,12 @@
-package org.fuchss.synapse_admin.ui.endpoint;
+package org.fuchss.synapseadmin.ui.endpoint;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swt.widgets.Composite;
-import org.fuchss.synapse_admin.api.Room;
-import org.fuchss.synapse_admin.dto.MatrixRoom;
-import org.fuchss.synapse_admin.ui.dto.RoomComposite;
+import org.fuchss.synapseadmin.api.Room;
+import org.fuchss.synapseadmin.dto.MatrixRoom;
+import org.fuchss.synapseadmin.ui.dto.RoomComposite;
 import org.fuchss.tools.tuple.Tuple2;
 
 public class RoomEndpointComposite extends EndpointComposite<Room, MatrixRoom, RoomComposite> {

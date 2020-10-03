@@ -1,11 +1,11 @@
-package org.fuchss.synapse_admin.api;
+package org.fuchss.synapseadmin.api;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.fuchss.synapse_admin.dto.MatrixUser;
-import org.fuchss.synapse_admin.server.Server;
+import org.fuchss.synapseadmin.dto.MatrixUser;
+import org.fuchss.synapseadmin.server.Server;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

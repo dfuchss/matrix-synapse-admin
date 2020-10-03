@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.ui;
+package org.fuchss.synapseadmin.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -7,9 +7,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.fuchss.synapse_admin.server.ILoginProvider;
-import org.fuchss.synapse_admin.server.ServerConf;
-import org.fuchss.synapse_admin.util.IObserver;
+import org.fuchss.synapseadmin.server.ILoginProvider;
+import org.fuchss.synapseadmin.server.ServerConf;
+import org.fuchss.synapseadmin.util.IObserver;
 
 public class Login extends Composite implements ILoginProvider {
 	private Text textServer;

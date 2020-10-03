@@ -1,12 +1,12 @@
-package org.fuchss.synapse_admin.ui.endpoint;
+package org.fuchss.synapseadmin.ui.endpoint;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swt.widgets.Composite;
-import org.fuchss.synapse_admin.api.User;
-import org.fuchss.synapse_admin.dto.MatrixUser;
-import org.fuchss.synapse_admin.ui.dto.UserComposite;
+import org.fuchss.synapseadmin.api.User;
+import org.fuchss.synapseadmin.dto.MatrixUser;
+import org.fuchss.synapseadmin.ui.dto.UserComposite;
 import org.fuchss.tools.tuple.Tuple2;
 
 public class UserEndpointComposite extends EndpointComposite<User, MatrixUser, UserComposite> {

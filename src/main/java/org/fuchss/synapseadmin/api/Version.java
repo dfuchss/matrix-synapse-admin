@@ -1,7 +1,7 @@
-package org.fuchss.synapse_admin.api;
+package org.fuchss.synapseadmin.api;
 
-import org.fuchss.synapse_admin.dto.MatrixVersion;
-import org.fuchss.synapse_admin.server.Server;
+import org.fuchss.synapseadmin.dto.MatrixVersion;
+import org.fuchss.synapseadmin.server.Server;
 
 public class Version extends Endpoint {
 

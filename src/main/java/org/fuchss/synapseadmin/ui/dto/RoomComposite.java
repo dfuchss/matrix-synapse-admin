@@ -1,4 +1,4 @@
-package org.fuchss.synapse_admin.ui.dto;
+package org.fuchss.synapseadmin.ui.dto;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -8,9 +8,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Text;
-import org.fuchss.synapse_admin.api.Room;
-import org.fuchss.synapse_admin.dto.MatrixRoom;
-import org.fuchss.synapse_admin.ui.endpoint.EndpointComposite;
+import org.fuchss.synapseadmin.api.Room;
+import org.fuchss.synapseadmin.dto.MatrixRoom;
+import org.fuchss.synapseadmin.ui.endpoint.EndpointComposite;
 
 public class RoomComposite extends DTOComposite<Room, MatrixRoom> {
 
