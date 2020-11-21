@@ -1,4 +1,6 @@
 # Matrix Synapse Admin
+![Java CI](https://github.com/dfuchss/matrix-synapse-admin/workflows/Java%20CI/badge.svg)
+
 A simple admin UI for [Synapse](https://github.com/matrix-org/synapse).
 The UI contains exactly the functions I currently need for the administration of my instance of Synapse.
 Especially, only parts of the [admin API](https://github.com/matrix-org/synapse/tree/master/docs/admin_api) are implemented yet.
