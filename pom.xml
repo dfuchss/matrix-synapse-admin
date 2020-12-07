@@ -14,8 +14,14 @@
 
 	<repositories>
 		<repository>
-			<id>maven-fuchss</id>
-			<url>https://raw.githubusercontent.com/dfuchss/maven/releases</url>
+			<id>github</id>
+			<name>GitHub Maven Packages (SWT Utils)</name>
+			<url>https://maven.pkg.github.com/dfuchss/swt-utils</url>
+		</repository>
+		<repository>
+			<id>github</id>
+			<name>GitHub Maven Packages (Java Tools)</name>
+			<url>https://maven.pkg.github.com/dfuchss/java-tools</url>
 		</repository>
 	</repositories>
 
