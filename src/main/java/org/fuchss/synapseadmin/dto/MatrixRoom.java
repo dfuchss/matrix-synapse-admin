@@ -41,6 +41,6 @@ public final class MatrixRoom {
 	}
 
 	public String prettyString() {
-		return (this.name == null ? "" : this.name + " - ") + this.roomId;
+		return (this.name == null || this.name.isBlank() ? "" : this.name + " - ") + this.roomId;
 	}
 }
