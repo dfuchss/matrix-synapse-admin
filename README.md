@@ -1,9 +1,11 @@
 # Matrix Synapse Admin
+![Maven Deploy (Dev)](https://github.com/dfuchss/matrix-synapse-admin/workflows/Maven%20Deploy%20(Dev)/badge.svg)
 
 A simple admin UI for [Synapse](https://github.com/matrix-org/synapse).
 The UI contains exactly the functions I currently need for the administration of my instance of Synapse.
 Especially, only parts of the [admin API](https://github.com/matrix-org/synapse/tree/master/docs/admin_api) are implemented yet.
-**The project itself is still WIP.**
+
+**The project itself is still WIP. The CI currently builds only for Linux Systems**
 
 ## Current Features (the features I need so far)
 * View Users & Rooms with additional information
