@@ -15,7 +15,7 @@ public final class MatrixUser {
 	private String userType;
 	@JsonProperty("deactivated")
 	private boolean deactivated;
-	@JsonProperty("display_name")
+	@JsonProperty("displayname")
 	private String displayName;
 	@JsonProperty("avatar_url")
 	private String avatarUrl;
@@ -54,8 +54,8 @@ public final class MatrixUser {
 
 	@Override
 	public String toString() {
-		return "MatrixUser [id=" + this.id + ", isGuest=" + this.isGuest + ", isAdmin=" + this.isAdmin + ", userType=" + this.userType
-				+ ", deactivated=" + this.deactivated + ", displayName=" + this.displayName + ", avatarUrl=" + this.avatarUrl + "]";
+		return "MatrixUser [id=" + this.id + ", isGuest=" + this.isGuest + ", isAdmin=" + this.isAdmin + ", userType=" + this.userType + ", deactivated=" + this.deactivated + ", displayName="
+				+ this.displayName + ", avatarUrl=" + this.avatarUrl + "]";
 	}
 
 	public String prettyString() {
